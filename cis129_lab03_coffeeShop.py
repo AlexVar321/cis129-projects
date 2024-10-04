@@ -7,35 +7,45 @@ def main():
     taxrate = 0.06
     muffinprice = 4
     coffeeprice = 5
-    flag = True
-    # here i have 2 while loops to get my inputted variables and check to make sure i am getting a number inputted from the user
+    cookieprice = 2
+    bagelprice = 3
+    # here i am asking for the quantity of items bought
+    print("***************************************")
     print("My Coffee and Muffin shop")
-    while flag:
-        getcoffees = input("number of coffees bought? ")
-        if getcoffees.isdigit():
-            print(getcoffees)
-            flag = False
-        else: print("please enter the number of coffees purchased.")
-    flag = True
-    while flag:
-        getmuffins = input("number of muffins bought? ")
-        if getmuffins.isdigit():
-            print(getmuffins)
-            flag = False
-        else: print("please enter the number of muffins purchased.")
-    # here i have more variables to do calculations for how many muffins and coffees were purchased and how much they cost
-    Purchasedmuffins = int(getmuffins)*muffinprice
-    purchasedcoffees = int(getcoffees)*coffeeprice
-    purchaseditems = purchasedcoffees+Purchasedmuffins
+    getcoffees = askQuantity("Number of coffees bought? ")
+    getmuffins = askQuantity("Number of muffins bought? ")
+    getcookies = askQuantity("Number of cookies bought? ")
+    getbagels = askQuantity("Number of bagels bought? ")
+    print("***************************************")
+    # here i have more variables to do calculations for how many of each items were purchased and how much they cost
+    Purchasedmuffins = getmuffins*muffinprice
+    purchasedcoffees = getcoffees*coffeeprice
+    purchasedcookies = getcookies*cookieprice
+    purchasedbagels = getbagels*bagelprice
+
+    purchaseditems = purchasedcoffees+Purchasedmuffins+purchasedbagels+purchasedcookies
     tax = purchaseditems*taxrate
     total = purchaseditems+tax
     # here i am printing the actual receipt 
+    print("***************************************")
+    print("My Coffee and Muffin Shop Receipt")
     print(getcoffees, "Coffee at $5 each:", purchasedcoffees)
     print(getmuffins, "Muffins at $4 each:", Purchasedmuffins)
+    print(getcookies, "cookies at $2 each:", purchasedcookies)
+    print(getbagels, "bagels at $3 each:", purchasedbagels)
     print("6% tax: ", tax)
     print("total: ", total)
-
-
-
+    print("Thanks for comming to my coffee and\nmuffin shop, we hope to see you again!")
+    print("***************************************")
+# this is my function for getting a number from the user given a prompt
+def askQuantity(prompt: str):
+        flag = True
+        while flag:
+            user_input = input(prompt)
+            if user_input.isdigit():
+                print(user_input)
+                flag = False
+            else: print("please enter the quantity purchased. ")
+        return int(user_input)
 if __name__ == "__main__":
     main()

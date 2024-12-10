@@ -49,9 +49,6 @@ def translate(phrase):
     return: translated phrase
     '''
 
-    # variable for naming vowels
-    vowels = "aeioAEIOU"
-
     # variable to split my phrase into lists
     english_words = phrase.split()
 
@@ -61,15 +58,31 @@ def translate(phrase):
     # for loop to translate each word in user's phrase and append each word
     # to the latin_words list then joins them into one string to send to main
     for word in english_words:
-        if word[0] in vowels:
-            # in: after
-            # out: afteray
-            latin = word + "ay"
-        else:
-            # in: hello
-            # out: ellohay
-            latin = word[1:] + word[:1] + 'ay'
+        latin = to_pig_latin(word)
         latin_words.append(latin)
     return " ".join(latin_words)
+
+def to_pig_latin(word):
+    '''
+    translates to Pig Latin based on rules
+
+    action: translates based on if word starts with vowel or not
+    input: word to be translated
+    output: translated pig latin word
+    return: translated pig latin word
+    '''
+
+    # variable for naming vowels
+    vowels = "aeioAEIOU"
+
+    if word[0] in vowels:
+            # in: after
+            # out: afteray
+        latin = word + "ay"
+    else:
+            # in: hello
+            # out: ellohay
+        latin = word[1:] + word[:1] + 'ay'
+    return latin
 
 main()

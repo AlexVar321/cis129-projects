@@ -113,8 +113,8 @@ def main():
     
     # prints result from class
     print("\nYour pet's details:")
-    print(f" Name: {my_pet.getName()}\n Type: {my_pet.getType()}\n"
-          f" Age: {my_pet.getAge()} years")
+    print(f"Name: {my_pet.getName()}\nType: {my_pet.getType()}\n"
+          f"Age: {my_pet.getAge()} years")
 
 
 def getString(prompt):
@@ -134,8 +134,7 @@ def getString(prompt):
 
         # makes the first letter uppercase and sends string back
         if name.isalpha():
-           firstLetter = name[0]
-           finalName = firstLetter.upper() + name[1:]
+           finalName = name[:1].upper() + name[1:]
            return str(finalName)
         else:
             print("Please don't use special characters\n")
